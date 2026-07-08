@@ -182,3 +182,23 @@
     border-right-color: var(--border);
   }
 }
+body {
+  background-color: #f4f6f8;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+#titr {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
