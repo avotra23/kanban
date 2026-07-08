@@ -10,19 +10,54 @@ function List() {
     { id: 4, title: "Préparer la réunion", description: "Créer les slides pour vendredi.", status: "todo" }
   ]);
 
+
   // Fonction qui reçoit la nouvelle tâche créée par le formulaire
   const handleAddTask = (nouvelleTache) => {
     setTasks((prevTasks) => [...prevTasks, nouvelleTache]);
   };
 
+  //Modification status 
+  const ModifierTache = (taskId) => {
+  setTasks((prevTasks) =>
+    prevTasks.map((task) =>
+      task.id === taskId ? { ...task, status: "in-progress" } : task
+    )
+   );
+  };
+
+  //Mettre en terminer
+   const TerminerTache = (taskId) => {
+  setTasks((prevTasks) =>
+    prevTasks.map((task) =>
+      task.id === taskId ? { ...task, status: "done" } : task
+    )
+   );
+  };
   const todoTasks = tasks.filter(task => task.status === 'todo');
   const inProgressTasks = tasks.filter(task => task.status === 'in-progress');
   const doneTasks = tasks.filter(task => task.status === 'done');
 
-  const TaskCard = ({ task }) => (
+  const TaskCard = ({ task ,onStart, onComplete}) => (
     <div className="kanban-task-card">
       <h3>{task.title}</h3>
       <p>{task.description}</p>
+      {task.status === 'todo' && (
+      <button 
+        className="btn-start" 
+        onClick={() => onStart(task.id)}
+      >
+        Mettre en cours
+      </button>
+    )}
+    {task.status === 'in-progress' && (
+      <button 
+        className="btn-term" 
+        onClick={() => onComplete(task.id)}
+      >
+        Terminer
+      </button>
+    )}
+
     </div>
   );
 
@@ -42,8 +77,12 @@ function List() {
           </h2>
           <div className="task-list">
             {todoTasks.map(task => (
-              <TaskCard key={task.id} task={task} />
-              
+              <TaskCard 
+                key={task.id} 
+                task={task} 
+                onStart={ModifierTache} 
+                onComplete={TerminerTache}
+              />
             ))}
           </div>
         </div>
@@ -54,7 +93,12 @@ function List() {
           </h2>
           <div className="task-list">
             {inProgressTasks.map(task => (
-              <TaskCard key={task.id} task={task} />
+              <TaskCard 
+                key={task.id} 
+                task={task}
+                onStart={ModifierTache} 
+                onComplete={TerminerTache} 
+              />
             ))}
           </div>
         </div>

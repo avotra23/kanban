@@ -99,3 +99,37 @@
 
 .done-col { border-top: 4px solid #38a169; }
 .done-col .kanban-task-card { border-left-color: #38a169; }
+
+.btn-start {
+    width: 100%;
+    padding: 10px;
+    background-color: #7b0604;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-start:hover {
+    background-color: #640f0a;
+}
+
+.btn-term {
+    width: 100%;
+    padding: 10px;
+    background-color: #047b1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-term:hover {
+    background-color: #198703;
+}
